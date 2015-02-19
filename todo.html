@@ -19,7 +19,7 @@
           </ul>
         </div>
 
-        <div class="col-md-6" id="Tasks">
+        <div class="col-md-6" id="Tasks" class="taskStuff">
           <h2></h2>
           <ul id="listTasks">
           </ul>
@@ -29,17 +29,25 @@
       <div class="row">
         <div class="col-md-6" id="formListDiv">
           <form id="formList">
-            <label for="nameList">Name:</label>
-            <input type="text" id="nameList"><br>
+            <div class="nameListDiv">
+              <label for="nameList">Name:</label>
+              <input type="text" class="nameList"><br>
+            </div>
+            <div class="listNames">
+            </div>
             <button class="btn btn-xs btn-info" type="submit">Add</button>
             <button class="btn btn-xs btn-info" id="anotherList" type="button">Another List</button>
           </form>
         </div>
 
-        <div class="col-md-6" id="formTaskDiv">
+        <div class="col-md-6" id="formTaskDiv" class="taskStuff">
           <form id="formTask">
+          <div class="nameTaskDiv">
             <label for="nameTask">Name:</label>
             <input type="text" id="nameTask"><br>
+          </div>
+            <div class="taskNames">
+            </div>
             <button class="btn btn-xs btn-info" type="submit">Add</button>
             <button class="btn btn-xs btn-info" id="anotherTask" type="button">Another Task</button>
           </form>
