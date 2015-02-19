@@ -1,7 +1,9 @@
 var List = {
   name: "",
 
-  tasks: [],
+  init: function() {
+    this.tasks = [];
+  },
 
   setName: function(inputName){
     this.name = inputName.split(" ").map( function(word) {
@@ -36,7 +38,6 @@ var Task = {
   }
 };
 
-
 $(function() {
   $("#anotherList").click(function() {
     $(".listNames").append(
@@ -56,19 +57,19 @@ $(function() {
     $(".nameListDiv").each(function(){
       var inputtedName = $(this).find('input.nameList').val();
       var newList = Object.create(List);
+      newList.init();
       newList.setName(inputtedName);
 
-      $("#listLists").append('<li class="listListClick" id="' + newList.getName() + '">' + newList.getName() + '</li>');
-
+      $("#listLists").append('<li class="listListClick">' + newList.getName() + '</li>');
 
       $(".listListClick").last().click(function() {
         currentList = newList;
+        var all_tasks = currentList.getTasks().map(function(task) { return task.getName() })
         $("#Tasks h2").text(currentList.getName());
         $("#listTasks").empty()
-        $("#listTasks").append(currentList.task[0]);
-        // currentList.getTasks().forEach( function(task){
-        //   $("#listTasks").append('<li class="listTask">' + task.getName() + "</li>");
-        // });
+        currentList.getTasks().forEach( function(task){
+          $("#listTasks").append('<li class="listTask">' + task.getName() + "</li>");
+        });
 
       });
 
@@ -78,8 +79,7 @@ $(function() {
         var newTask = Object.create(Task);
         newTask.setName(newTaskName);
         currentList.addTask(newTask);
-        alert(newTask.getName() + currentList.getName());
-
+        var all_tasks = currentList.getTasks().map(function(task) { return task.getName() })
 
         $("#listTasks").empty()
         currentList.getTasks().forEach( function(task){
